@@ -6,7 +6,7 @@ const routes = useRouter().getRoutes().sort((a, b) => a.path.localeCompare(b.pat
 </script>
 
 <template>
-  <div style="padding: 2rem; font-family: sans-serif;">
+  <div style="padding: 2rem;">
     <ul>
       <li
         v-for="route in routes"
