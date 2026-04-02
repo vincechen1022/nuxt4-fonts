@@ -1,75 +1,30 @@
-# Nuxt Minimal Starter
+# nuxt4-fonts
 
-Look at the [Nuxt documentation](https://nuxt.com/docs/getting-started/introduction) to learn more.
+以 Nuxt 4 與 `@nuxt/fonts` 為主的實驗專案，用來觀察加入 **Noto Sans**／**Noto Sans TC** 後，建置產物與瀏覽器端資源行為。
 
-## Setup
+## 專案目的
 
-Make sure to install dependencies:
+本專案建立的主要原由，是**測試在專案中接入 Noto Sans 系列字型後，相關資源的大小與載入情形**（含 `@nuxt/fonts` 產生的 CSS／字型檔等），方便與未接入或不同設定的情況對照。
 
-```bash
-# npm
-npm install
+## 字體設定
 
-# pnpm
-pnpm install
+字型於 `nuxt.config.ts` 的 `fonts.families` 中設定（Google：`Noto Sans`、`Noto Sans TC`）。全域字族與 Tailwind `font-sans` 見 `app/assets/css/global.css` 與 `tailwind.config.js`。
 
-# yarn
-yarn install
+## 測試方式與觀察 Coverage
 
-# bun
-bun install
-```
+建議流程：
 
-## Development Server
+1. **`pnpm build`**：產出正式建置。
+2. **`pnpm preview`**：以接近上線的方式在本機預覽。
+3. 開啟**瀏覽器開發者工具 → Coverage**，在錄製一段操作後檢視 **JS／CSS 的使用與未使用比例**。
 
-Start the development server on `http://localhost:3000`:
+## 測試結論
 
-```bash
-# npm
-npm run dev
+依上述方式實測，**接入 Noto Sans（含 Noto Sans TC 等設定）後，整體下載與打包出來的相關資源明顯變成很大一包**（字型檔分片、`@font-face` 與對應 CSS 等加總後體積顯著上升）。
 
-# pnpm
-pnpm dev
+---
 
-# yarn
-yarn dev
+## Nuxt Font 配置
 
-# bun
-bun run dev
-```
+參考: https://stackblitz.com/github/nuxt/fonts/tree/main/playgrounds/basic?file=tsconfig.json
 
-## Production
-
-Build the application for production:
-
-```bash
-# npm
-npm run build
-
-# pnpm
-pnpm build
-
-# yarn
-yarn build
-
-# bun
-bun run build
-```
-
-Locally preview production build:
-
-```bash
-# npm
-npm run preview
-
-# pnpm
-pnpm preview
-
-# yarn
-yarn preview
-
-# bun
-bun run preview
-```
-
-Check out the [deployment documentation](https://nuxt.com/docs/getting-started/deployment) for more information.
